@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Prints a natural numbers to factor.
+while read -r num_line
+do
+    factor_value=($(factor $num_line))
+    echo "$num_line=$(($num_line/${factor_value[1]}))*${factor_value[1]}"
+done < $1
+(time ./a.out) 2>&1|grep real;(time ./a.out) 2>&1|grep user; (time ./a.out) 2>&1|grep sys;
